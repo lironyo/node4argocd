@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+  labels:
+    app: node-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+        - name: node-app
+          image: node:20-alpine
+          imagePullPolicy: IfNotPresent
+          command:
+            - "node"
+            - "-e"
+            - "const http = require('http'); const port = process.env.PORT || 3000; http.createServer((req,res)=>res.end('Hello from node:20-alpine')).listen(port,()=>console.log('listening '+port));"
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: node-app-config
