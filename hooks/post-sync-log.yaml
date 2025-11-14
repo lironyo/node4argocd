@@ -3,7 +3,8 @@ kind: Job
 metadata:
   name: post-sync-log
   annotations:
-    argocd.argoproj.io/hook: PostSync   # runs AFTER sync
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
