@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: node-app
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
   labels:
     app: node-app
 spec:
