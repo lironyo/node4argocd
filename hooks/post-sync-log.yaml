@@ -18,8 +18,8 @@ spec:
           - |
             STATUS=$(kubectl get deployment node4argocd -o jsonpath='{.status.conditions[?(@.type=="Available")].status}')
             if [ "$STATUS" != "True" ]; then
-              echo "Deployment not available. Sync for node4argocd app FAILED"
+              echo "Deployment not available. Sync for node4argocd app FAILED && sleep 30"
               exit 1
             else
-              echo "Deployment available.The Sync for node4argocd app SUCCESS"
+              echo "Deployment available.The Sync for node4argocd app SUCCESS && sleep 30"
             fi
