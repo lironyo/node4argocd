@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pre-sync-log
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: pre-sync
+        image: busybox
+        command: ["sh", "-c", "echo 'Pre-sync hook: Starting node4ardocd app deployment'"]
